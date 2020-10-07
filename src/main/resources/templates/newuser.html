@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:id="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RunCalc | Calculate everything</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css" th:href="'stylesheet.css'">
+
+</head>
+
+<body>
+<!-------- HEADER -------->
+
+<header>
+    <div class="headerNyBruker">
+        <p id="headerLoginTekst">Registrer deg</p>
+    </div>
+</header>
+
+<!-------- FORM NEW USER -------->
+
+
+<form th:object="${user}" action="/register" method="post">
+
+    <a class="leftArrowAtag" href="/"><p id="arrowPtag">&#60;</p></a>
+
+    <div class="formContainer">
+        <div class="tekst">
+            <p>Fill out your details below to make an account</p>
+            <p class="dineDet">Your details</p>
+        </div>
+
+        <p class="errorText" th:if="${#fields.hasErrors('firstName')}">First Name must be between 3-30 characters</p>
+        <input th:field="*{firstName}" th:errorclass="error" class="inputs" id="first" type="text" placeholder="First Name" autofocus>
+
+        <p class="errorText" th:if="${#fields.hasErrors('lastName')}">Last Name must be between 3-30 characters</p>
+        <input th:field="*{lastName}" th:errorclass="error" class="inputs" id="last" type="text"
+               placeholder="Last Name">
+
+        <p class="errorText" th:if="${#fields.hasErrors('email')}">Not a valid Email</p>
+        <input th:field="*{email}" th:errorclass="error" type="text" placeholder="Email">
+
+        <p class="errorText" th:if="${#fields.hasErrors('password')}">Password must be at least 6 characters long</p>
+        <input th:field="*{password}" th:errorclass="error" class="inputs" type="password" placeholder="Pasword">
+
+        <div class="checkboxRegistration">
+            <div class="checkBoxCon">
+                <input type="checkbox" required id="ToS" name="brukervilkaar" value="tos">
+                <label class="" for="tos"> Jeg godkjenner <a href="#"
+                                                             onclick="alert('Petmatch lagrer alle kjøp og salg 6 måneder bak i tid. For sletting av konto send mail til admin@petmatch.no');">vilkårene</a>
+                    for å bruke PetMatch</label>
+            </div>
+
+            <div class="checkBoxCon">
+                <input type="checkbox" id="NL" name="newsletter" value="nl">
+                <label for="nl"> Jeg vil ha nyhetsbrev</label>
+            </div>
+        </div>
+
+        <div id="submitBox">
+            <input class="orangeButton" type="submit" value="Continue">
+        </div>
+    </div>
+</form>
+</body>
+
+</html>

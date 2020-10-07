@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UFT-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+    <title>Pet Match | Enkel omplassering av dyr</title>
+    <link rel="icon" type="image/png" href="/image/paw.png">
+
+</head>
+
+<body>
+<!-------- HEADER -------->
+
+<header>
+    <div>
+        <img id="headerLogo" src="image/LogoPetMatch.png" alt="Pet Match logo">
+    </div>
+</header>
+
+<!-------- INTRO -------->
+
+<div class="containerIntro">
+
+    <!--    <div class="arrow">
+            <p>&#8826</p>
+        </div>-->
+
+    <div class="boxIntro">
+        <img id="introimg" src="image/intropic1.jpg" alt="Introbilde 1">
+    </div>
+
+    <!--   <div class="arrow">
+           <p>&#8827</p>
+       </div>-->
+
+</div>
+<div class="introTekst">
+    <p>PetMatch er en tjeneste som knytter nye eiere opp mot dyr som av ulike grunner har behov for omplassering
+    </p>
+</div>
+<!-------- LOGIN/SIGNUP -------->
+
+<div class="containerLoginSignup">
+    <div class="orangeButtonLog">
+        <a class="textLogNy" href="/login">Logg inn</a>
+    </div>
+
+    <div class="orangeButtonLog">
+        <a class="textLogNy" href="/registrer">Ny bruker</a>
+    </div>
+</div>
+
+<div class="containerFaqAbout">
+    <button class="faqAboutButtonAtag" onclick="faq()">FAQ
+    </button>
+
+    <button class="faqAboutButtonAtag" onclick="about()">About
+    </button>
+
+    <script>
+        function faq() {
+            alert(
+                "Er denne tjenesten gratis å bruke?\n" +
+                "Ja, den er gratis å bruke.\n" +
+                "\nHvilke dyr finnes på PetMatch?\n" +
+                "Hund og katt, men flere kommer snart.\n" +
+                "\nKan dyrevernsorganisasjoner bruke PetMatch?\n" +
+                "Ja."
+            );
+        }
+        function about() {
+            alert("PetMatch er en gratis tjeneste for omplassering av dyr.\n" +
+                "\nHer kan eiere og organisasjoner legge ut dyr med omplasseringsbehov slik at disse kan få nye eiere.\n");
+        }
+    </script>
+</div>
+
+</body>
+</html>

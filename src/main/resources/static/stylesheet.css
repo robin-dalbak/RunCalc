@@ -1,0 +1,116 @@
+.header {
+    padding: 15px;
+    text-align: center;
+    background: #4748FF;
+    color: #ffff00;
+    font-size: 30px;
+}
+
+.introBilde {
+    display: flex;
+    justify-content: center;
+}
+
+.introTekst {
+    text-align: center;
+    width: 250px;
+    font-size: 14px;
+    margin: auto;
+}
+.errorText {
+    color: red;
+    font-size: 10px;
+}
+
+.error {
+    border-style: solid;
+    border-color: red;
+}
+
+input:focus {
+    outline: none;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 18%;
+    max-width: 100%;
+    text-align: center;
+}
+
+.leftArrowAtag {
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    color: black;
+}
+
+.dineDet {
+    text-align: center;
+    color: grey;
+    margin-bottom: 0;
+    margin-top: 35px;
+    font-size: 15px;
+}
+
+.checkboxRegistration {
+    font-size: 12px;
+    margin: 25px 0;
+}
+
+.dineDet {
+    text-align: center;
+    color: grey;
+    margin-bottom: 0;
+    margin-top: 35px;
+    font-size: 15px;
+}
+
+.checkboxRegistration {
+    font-size: 12px;
+    margin: 25px 0;
+}
+.checkBoxCon{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 12px 0;
+}
+
+label {
+    width: 190px;
+    text-align: left;
+}
+
+#ToS, #NL {
+    width: 30px;
+    margin: 0;
+}
+
+input #ToS, input #NL {
+    width: 20px;
+}
+
+.orangeButton {
+    border-radius: 15px;
+    border: 0;
+    padding: 10px;
+    width: 160px;
+    height: 40px;
+    background-color: #ff914d;
+    color: white;
+}
+
+input {
+    width: 100%;
+    margin: 6% 0;
+    border-radius: 15px;
+    border: 0.5px solid grey;
+    padding: 10px;
+}
+
+
