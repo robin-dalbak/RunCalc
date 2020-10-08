@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Formulas {
 
 
-    public float timeSeconds;
-    float timeMinutes;
+    public float timeInSeconds;
+    float timeInMinutes;
     float distanceInKilometer;
     float kilometerPerHour;
     float metersPerSecond;
@@ -14,8 +14,8 @@ public class Formulas {
     int intMinutesPerKilometer;
     float secondsPerKilometer;
     float bodyMassIndex;
-    float basalMetabolicRate1;
-    float basalMetabolicRate2;
+    float preBMR;
+    float basalMetabolicRate;
     double squareRootHeight;
     float minPerKm;
     int paceMinute;
@@ -62,42 +62,42 @@ public class Formulas {
 
         System.out.println("How much do you exercise?\n " +
                 "1. Sedentary: Little or no exercise\n " +
-                "2. Exercise 1-3 times/week\n " +
-                "3. Exercise 4-5 times/week\n " +
-                "4. Daily exercise or intense exercise 6-7 times/week\n " +
-                "5. Intense exercise 8-10 times/week\n " +
+                "2. Lightly active - Exercise 1-3 times/week\n " +
+                "3. Moderately active - Exercise 4-5 times/week\n " +
+                "4. Very active - Daily exercise or intense exercise 6-7 times/week\n " +
+                "5. Super active - Intense exercise 8-10 times/week\n " +
                 "Input one of the number above: ");
         int exercise = input.nextInt();
 
 
 
         if (gender.equals("male")) {
-            basalMetabolicRate1 = (66.47f + (weight * 13.7f) + (height * 5f) - (age * 6.8f));
+            preBMR = (66.47f + (weight * 13.7f) + (height * 5f) - (age * 6.8f));
         }
         if (gender.equals("female")) {
-            basalMetabolicRate1 = (655 + (weight * 9.6f) + (height * 1.8f) - (age * 4.7f));
+            preBMR = (655 + (weight * 9.6f) + (height * 1.8f) - (age * 4.7f));
         }
 
         switch (exercise) {
             case 1:
-                basalMetabolicRate2 = (basalMetabolicRate1 * 1.2f);
+                basalMetabolicRate = (preBMR * 1.2f);
                 break;
             case 2:
-                basalMetabolicRate2 = (basalMetabolicRate1 * 1.375f);
+                basalMetabolicRate = (preBMR * 1.375f);
                 break;
             case 3:
-                basalMetabolicRate2 = (basalMetabolicRate1 * 1.55f);
+                basalMetabolicRate = (preBMR * 1.55f);
                 break;
             case 4:
-                basalMetabolicRate2 = (basalMetabolicRate1 * 1.725f);
+                basalMetabolicRate = (preBMR * 1.725f);
                 break;
             case 5:
-                basalMetabolicRate2 = (basalMetabolicRate1 * 1.9f);
+                basalMetabolicRate = (preBMR * 1.9f);
                 break;
         }
 
 
-        System.out.println("Your BMR is: " + basalMetabolicRate2);
+        System.out.println("Your BMR is: " + basalMetabolicRate);
     }
 
     public void CalculateRun() {
@@ -110,14 +110,14 @@ public class Formulas {
         System.out.println("input seconds: ");
         float seconds = input.nextFloat();
 
-        timeSeconds = (hour * 3600) + (minutes * 60) + seconds;
-        timeMinutes = (hour * 60) + (seconds / 60) + minutes;
+        timeInSeconds = (hour * 3600) + (minutes * 60) + seconds;
+        timeInMinutes = (hour * 60) + (seconds / 60) + minutes;
         distanceInKilometer = distance / 1000;
-        minutesPerKilometer = timeMinutes / distanceInKilometer;
+        minutesPerKilometer = timeInMinutes / distanceInKilometer;
         intMinutesPerKilometer = (int) minutesPerKilometer;
         secondsPerKilometer = (minutesPerKilometer - intMinutesPerKilometer) * 60;
-        metersPerSecond = distance / timeSeconds;
-        kilometerPerHour = (distance / 1000.0f) / (timeSeconds / 3600.0f);
+        metersPerSecond = distance / timeInSeconds;
+        kilometerPerHour = (distance / 1000.0f) / (timeInSeconds / 3600.0f);
 
 
         System.out.println("Your speed in km/h is: " + kilometerPerHour);

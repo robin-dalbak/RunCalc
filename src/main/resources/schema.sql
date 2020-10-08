@@ -14,11 +14,14 @@ CREATE TABLE info
     age            INT(2),
     height         INT(3),
     weight         INT(3),
-    exercise_level ENUM ('1', '2', '3', '4', '5')
-    FOREIGN KEY (id) REFERENCES user (id)
+    exercise_level ENUM ('SEDENTARY', 'LIGHTLY_ACTIVE', 'MODERATELY_ACTIVE', 'VERY_ACTIVE', 'SUPER_ACTIVE'),
+        FOREIGN KEY (id) REFERENCES user (id)
 );
 
+CREATE table calculations
+(
+    id  BIGINT,
+    bmi FLOAT(50),
+    bmr FLOAT(50)
 
-
-INSERT INTO User (first_name, last_name, password, email)
-VALUES ('Abdi', 'Nordmann', '123456', 'Abdi123@gmail.com');
+);
