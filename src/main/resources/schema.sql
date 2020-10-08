@@ -1,4 +1,4 @@
-CREATE TABLE User
+CREATE TABLE user
 (
     id         BIGINT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(20),
@@ -15,13 +15,16 @@ CREATE TABLE info
     height         INT(3),
     weight         INT(3),
     exercise_level ENUM ('SEDENTARY', 'LIGHTLY_ACTIVE', 'MODERATELY_ACTIVE', 'VERY_ACTIVE', 'SUPER_ACTIVE'),
-        FOREIGN KEY (id) REFERENCES user (id)
+    user_id        BIGINT,
+        FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE table calculations
 (
     id  BIGINT,
     bmi FLOAT(50),
-    bmr FLOAT(50)
-
+    bmr FLOAT(50),
+    info_id BIGINT,
+    FOREIGN KEY (info_id) REFERENCES info(id)
 );
+

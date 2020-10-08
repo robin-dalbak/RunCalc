@@ -1,34 +1,38 @@
 package com.app.runcalc;
 
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@PrimaryKeyJoinColumn
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Info extends User {
 
     @Id
-    int id;
+    private int id;
     @Enumerated(EnumType.STRING)
-    String userGender;
-    int age;
-    float height;
-    float weight;
+    @Column(name = "user_gender")
+    private UserGender userGender;
+    private int age;
+    private float height;
+    private float weight;
     @Enumerated(EnumType.STRING)
-    int exerciseLevel;
+    @Column(name = "exercise_level")
+    private ExerciseLevel exerciseLevel;
+//    @Column(name = "user_id")
+//    private Integer userId;
 
     public Info() {
     }
 
-
-
-    public Info(String firstName, String lastName, String password, String email, String userGender, int age, float height, float weight, int exerciseLevel) {
+    public Info(String firstName, String lastName, String password, String email, UserGender userGender, int age, float height, float weight, ExerciseLevel exerciseLevel) {
         super(firstName, lastName, password, email);
         this.userGender = userGender;
         this.age = age;
         this.height = height;
         this.weight = weight;
         this.exerciseLevel = exerciseLevel;
+//        this.userId = userId;
     }
 
     @Override
@@ -41,11 +45,11 @@ public class Info extends User {
         this.id = id;
     }
 
-    public String getUserGender() {
+    public UserGender getUserGender() {
         return userGender;
     }
 
-    public void setUserGender(String userGender) {
+    public void setUserGender(UserGender userGender) {
         this.userGender = userGender;
     }
 
@@ -73,13 +77,20 @@ public class Info extends User {
         this.weight = weight;
     }
 
-    public int getExerciseLevel() {
+    public ExerciseLevel getExerciseLevel() {
         return exerciseLevel;
     }
 
-    public void setExerciseLevel(int exerciseLevel) {
+    public void setExerciseLevel(ExerciseLevel  exerciseLevel) {
         this.exerciseLevel = exerciseLevel;
     }
 
+//    public Integer getUserId() {
+//        return userId;
+//    }
+//
+//    public void setUserId(Integer userId) {
+//    this.userId = userId;
+//    }
 
 }

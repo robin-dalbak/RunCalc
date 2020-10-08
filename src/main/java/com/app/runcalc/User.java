@@ -14,20 +14,22 @@ import javax.persistence.Table;
 
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "FIRST_NAME")
+    @Column(name = "first_name")
     @Size(min = 3, max = 20)
     private String firstName;
-    @Column(name = "LAST_NAME")
+    @Column(name = "last_name")
     @Size(min = 3, max = 30)
     private String lastName;
     @Size(min = 6, max = 50)
     private String password;
-    @Column(name = "EMAIL")
+    @Column(name = "email")
     @Email
     private String email;
 
