@@ -77,13 +77,24 @@ public class RunCalcController {
     }
 
     @GetMapping("/home")
-    public String getHome(@ModelAttribute User user) {
+    public String getHome(HttpSession s, Model m) {
+        User user = (User) s.getAttribute("currentUser");
+        User currentUser = (User) s.getAttribute("currentUser");
+        Info info = (Info) s.getAttribute("currentInfo");
+        Info currentInfo = (Info) s.getAttribute("currentInfo");
+
+        m.addAttribute("user", user);
+        m.addAttribute("currentUser", currentUser);
+        m.addAttribute("Info", info);
+        m.addAttribute("currentInfo", currentInfo);
+
         return "home";
     }
 
     @GetMapping("/logout")
-    public String getLogout(@ModelAttribute User user) {
-        return "logout";
+    public String getLogout(HttpSession s) {
+        s.removeAttribute("currentUser");
+        return "redirect:/logout";
     }
 
 

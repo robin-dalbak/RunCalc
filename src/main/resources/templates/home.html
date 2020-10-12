@@ -16,9 +16,25 @@
     </div>
 </header>
 
+<h1 th:text="${user.getFirstName()}"></h1>
+
+<form action="/home">
+    <label for="height">Your height: </label>
+    <input type="text" id="height"
+           height="height"><br><br>
+    <label for="weight">Your weight: </label>
+    <input type="text" id="weight"
+           weight="weight"><br><br>
+    <input type="submit" value="Save/calculate">
+
+</form>
+
+
 <p>
 Calculate BMI press here;
 </p>
+
+
 
 <form action="/home" method="post">
     <input class="orangeButton" type="submit" value="Login">
