@@ -13,7 +13,8 @@ public class Calculations extends Info {
     private int id;
     private float bmi;
     private float bmr;
-    float preBMR;
+
+
 //    @Column(name = "info_id")
 //    private Integer infoId;
 
@@ -23,6 +24,7 @@ public class Calculations extends Info {
     }
 
     public void CalculateBMR() {
+        float preBMR = 0;
 
         if (getUserGender().equals(UserGender.MALE)) {
             preBMR = (66.47f + (getWeight() * 13.7f) + (getHeight() * 5f) - (getAge() * 6.8f));

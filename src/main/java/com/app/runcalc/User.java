@@ -15,7 +15,6 @@ import javax.persistence.Table;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
 public class User {
 
     @Id

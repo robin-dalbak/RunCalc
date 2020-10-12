@@ -11,12 +11,11 @@ CREATE TABLE info
 (
     id             BIGINT,
     user_gender    ENUM ('MALE', 'FEMALE'),
-    age            INT(2),
-    height         INT(3),
-    weight         INT(3),
+    age            INT,
+    height         INT,
+    weight         INT,
     exercise_level ENUM ('SEDENTARY', 'LIGHTLY_ACTIVE', 'MODERATELY_ACTIVE', 'VERY_ACTIVE', 'SUPER_ACTIVE'),
-    user_id        BIGINT,
-        FOREIGN KEY (user_id) REFERENCES user(id)
+        FOREIGN KEY (id) REFERENCES user(id)
 );
 
 CREATE table calculations
@@ -24,7 +23,6 @@ CREATE table calculations
     id  BIGINT,
     bmi FLOAT(50),
     bmr FLOAT(50),
-    info_id BIGINT,
-    FOREIGN KEY (info_id) REFERENCES info(id)
+    FOREIGN KEY (id) REFERENCES info(id)
 );
 

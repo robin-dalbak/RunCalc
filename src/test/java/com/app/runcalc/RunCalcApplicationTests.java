@@ -29,6 +29,15 @@ class RunCalcApplicationTests {
         assertEquals("Jensen", user.getLastName());
         assertEquals("123456", user.getPassword());
         assertEquals("Kristine123@gmail.com",user.getEmail());
+
+    }
+
+    @Test
+    void findUserWithEmail() {
+        User user = repository.findByEmail("Abdi123@gmail.com");
+
+        assertEquals("123456", user.getPassword());
+
     }
 
 }
