@@ -12,9 +12,20 @@
 <!-------- HEADER -------->
 <header>
     <div class="header">
-        <h1>RunCalc</h1>
+        <div id="options">
+            <h1><span class="highlight">Run</span>Calc</h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="current"><a href="home.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
+
+
 
 <h1 th:text="${user.getFirstName()}"></h1>
 
@@ -44,6 +55,8 @@ Calculate BMI press here;
 
 
 
-
+<footer>
+    <p>RunCalc, Copyright &copy; 2020 </p>
+</footer>
 </body>
 </html>
