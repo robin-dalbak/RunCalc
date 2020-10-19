@@ -119,10 +119,17 @@ header a:hover {
     width: 250px;
 }
 
-#newsletter h4 {
+#footer h4 {
+    padding: 15px;
     color: #F13C20;
     text-align: center;
+    background:#2F2FA2;
+    margin-top:inherit;
+    margin-bottom: inherit;
+
 }
+
+
 
 .introBilde {
     display: flex;

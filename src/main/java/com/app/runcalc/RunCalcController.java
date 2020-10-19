@@ -40,6 +40,11 @@ public class RunCalcController {
         return "intro";
     }
 
+    @GetMapping("/about")
+    public String About() {
+        return "about";
+    }
+
     @GetMapping("/login")
     public String getLogin(@ModelAttribute User user) {
         return "login";
