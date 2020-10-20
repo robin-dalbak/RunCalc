@@ -17,17 +17,21 @@
         </div>
         <nav>
             <ul>
-                <li class="current"><a href="home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="logout.html">Logout</a></li>
+                <li class="current"><a href="home">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="logout">Logout</a></li>
             </ul>
         </nav>
     </div>
 </header>
 
 
-
+<!-------- User info -------->
 <h1 th:text="${user.getFirstName()}"></h1>
+
+
+
+<h1 th:text="${user.()}"></h1>
 
 <form action="/home">
     <label for="height">Your height: </label>
@@ -41,10 +45,11 @@
 </form>
 
 
-<p>
-Calculate BMI press here;
-</p>
 
+
+<p>
+    Calculate BMI press here;
+</p>
 
 
 <form action="/home" method="post">
@@ -54,9 +59,8 @@ Calculate BMI press here;
 <a href="/logout">Logout</a>
 
 
-
-<footer>
-    <p>RunCalc, Copyright &copy; 2020 </p>
-</footer>
+<section id="footer">
+    <h4>RunCalc, Copyright &copy; 2020 </h4>
+</section>
 </body>
 </html>

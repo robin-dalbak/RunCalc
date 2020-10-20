@@ -19,7 +19,6 @@ import java.util.Map;
 import javax.validation.Valid;
 
 
-
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -29,10 +28,17 @@ public class RunCalcController {
     @Autowired
     public UserRepository userRepository;
 
-    public RunCalcController(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    public InfoRepository infoRepository;
 
+    @Autowired
+    public CalculationsRepository calculationsRepository;
+
+/*    public RunCalcController(UserRepository userRepository, InfoRepository infoRepository, CalculationsRepository calculationsRepository) {
+        this.userRepository = userRepository;
+        this.infoRepository = infoRepository;
+        this.calculationsRepository = calculationsRepository;
+    }*/
 
 
     @GetMapping("/")
@@ -53,7 +59,6 @@ public class RunCalcController {
     @PostMapping("/login")
     public String postLogin(@ModelAttribute User user, HttpSession s, Model m) {
         User logger = userRepository.findByEmail(user.getEmail());
-
 
         if (logger != null && logger.getEmail().equals(user.getEmail()) && logger.getPassword().equals(user.getPassword())) {
             s.setAttribute("currentUser", logger);
@@ -83,15 +88,21 @@ public class RunCalcController {
 
     @GetMapping("/home")
     public String getHome(HttpSession s, Model m) {
+
+//        Info userInfo = infoRepository.findByEmail(info.getEmail());
+//        Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
+
         User user = (User) s.getAttribute("currentUser");
         User currentUser = (User) s.getAttribute("currentUser");
         Info info = (Info) s.getAttribute("currentInfo");
         Info currentInfo = (Info) s.getAttribute("currentInfo");
 
+
         m.addAttribute("user", user);
         m.addAttribute("currentUser", currentUser);
-        m.addAttribute("Info", info);
+        m.addAttribute("info", info);
         m.addAttribute("currentInfo", currentInfo);
+
 
         return "home";
     }
