@@ -87,22 +87,33 @@ public class RunCalcController {
     }
 
     @GetMapping("/home")
-    public String getHome(HttpSession s, Model m) {
+    public String getHome(@Valid Info info, BindingResult result, HttpSession s, Model m) {
+
+        if (result.hasErrors()) {
+            return "home";
+        }
+
+        User user = (User) s.getAttribute("currentUser");
+
+        // Create user
+        User currentUser = (User) s.getAttribute("currentUser");
+        userRepository.save(currentUser);
+
+        // Creat info on User
+        info.setId(currentUser.getId());
+        info.setAge(info.getAge());
+        info.setUserGender(info.getUserGender());
+        info.setHeight(info.getHeight());
+        info.setWeight(info.getWeight());
+        info.setExerciseLevel(info.getExerciseLevel());
+        infoRepository.save(info);
 
 //        Info userInfo = infoRepository.findByEmail(info.getEmail());
 //        Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
-
-        User user = (User) s.getAttribute("currentUser");
-        User currentUser = (User) s.getAttribute("currentUser");
-        Info info = (Info) s.getAttribute("currentInfo");
-        Info currentInfo = (Info) s.getAttribute("currentInfo");
-
-
+        s.setAttribute("currentUser", currentUser);
+        s.setAttribute("currentUser", user);
         m.addAttribute("user", user);
         m.addAttribute("currentUser", currentUser);
-        m.addAttribute("info", info);
-        m.addAttribute("currentInfo", currentInfo);
-
 
         return "home";
     }

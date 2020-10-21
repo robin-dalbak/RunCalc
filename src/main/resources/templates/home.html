@@ -27,40 +27,64 @@
 
 
 <!-------- User info -------->
-<h1 th:text="${user.getFirstName()}"></h1>
+<h1 th:text="Hey  + ${user.getFirstName()}"></h1>
 
 
 
-<h1 th:text="${user.()}"></h1>
+    <div class="optionType">
+        <p>Fill out this form and RunCalc will calculate your BMI and BMR, for more info about how we calculate this for
+            you, check out our <a href="about">about</a> page.</p>
+    </div>
 
-<form action="/home">
-    <label for="height">Your height: </label>
-    <input type="text" id="height"
-           height="height"><br><br>
-    <label for="weight">Your weight: </label>
-    <input type="text" id="weight"
-           weight="weight"><br><br>
-    <input type="submit" value="Save/calculate">
+    <div class="optionType">
 
-</form>
+        <form action="/home" method="post" th:object="${user}">
+
+            <div class="optionType">
+                <select name="userGender" required>
+                    <option value="" selected disabled hidden>Gender</option>
+                    <option th:each="userGender : ${T(com.app.runcalc.UserGender).values()}"
+                            th:value="${userGender}" th:text="${userGender.displayValueGender}"></option>
+                </select>
+            </div>
+
+              <div class="optionType">
+              <p class="errorText" th:if="${#fields.hasErrors('age')}"> Please fill out this field</p>
+                <input th:errorclass="error" type="number" min="0" max="150" th:field="*{age}"
+                        placeholder="Your age" required>
+                  </div>
+
+              <div class="optionType">
+                  <p class="errorText" th:if="${#fields.hasErrors('height')}"> Please fill out this field</p>
+                  <input th:errorclass="error" type="number" min="0" max="150" th:field="*{height}"
+                         placeholder="Your height in CM" required>
+              </div>
+
+              <div class="optionType">
+                  <p class="errorText" th:if="${#fields.hasErrors('weight')}"> Please fill out this field</p>
+                  <input th:errorclass="error" type="number" min="0" max="150" th:field="*{weight}"
+                         placeholder="Your weight in kilo" required>
+              </div>
+
+            <div class="optionType">
+                <select name="exerciseLevel" required>
+                    <option value="" selected disabled hidden>Exercise level</option>
+                    <option th:each="exerciseLevel : ${T(com.app.runcalc.ExerciseLevel).values()}"
+                            th:value="${exerciseLevel}" th:text="${exerciseLevel.displayValueEl}"></option>
+                </select>
+            </div>
+
+            <div class="optionType">
+                <input class="continueButtons" type="submit" value="Continue">
+            </div>
 
 
+        </form>
+    </div>
 
+        <section id="footer">
+            <h4>RunCalc, Copyright &copy; 2020 </h4>
+        </section>
 
-<p>
-    Calculate BMI press here;
-</p>
-
-
-<form action="/home" method="post">
-    <input class="orangeButton" type="submit" value="Login">
-</form>
-
-<a href="/logout">Logout</a>
-
-
-<section id="footer">
-    <h4>RunCalc, Copyright &copy; 2020 </h4>
-</section>
 </body>
 </html>

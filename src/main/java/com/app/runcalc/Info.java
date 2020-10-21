@@ -2,6 +2,8 @@ package com.app.runcalc;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Positive;
 
 @Entity
 @PrimaryKeyJoinColumn
@@ -13,7 +15,12 @@ public class Info extends User {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_gender")
     private UserGender userGender;
-    private int age;
+
+    @Column(name="age")
+    @Positive
+    @Max(value = 120)
+    private Integer age;
+
     private float height;
     private float weight;
     @Enumerated(EnumType.STRING)
@@ -53,7 +60,7 @@ public class Info extends User {
         this.userGender = userGender;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 

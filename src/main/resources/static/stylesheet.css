@@ -175,6 +175,29 @@ input:focus {
     color: black;
 }
 
+
+.optionType {
+    display: flex;
+    justify-content: center;
+    margin: 10px 40px;
+}
+
+.continueButtons {
+    border-radius: 15px;
+    border: 0;
+    padding: 10px;
+    width: 160px;
+    height: 40px;
+    background-color: #ff914d;
+    color: white;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
 .dineDet {
     text-align: center;
     color: grey;
