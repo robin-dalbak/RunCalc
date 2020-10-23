@@ -40,4 +40,12 @@ class RunCalcApplicationTests {
 
     }
 
+    @Test
+    void findUserByAge() {
+        Info info = (Info) repository.findById(1).get();
+
+        assertEquals(18, info.getAge());
+    }
+
+
 }

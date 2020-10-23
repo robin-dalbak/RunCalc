@@ -32,7 +32,7 @@ public class Info extends User {
     public Info() {
     }
 
-    public Info(String firstName, String lastName, String password, String email, UserGender userGender, int age, float height, float weight, ExerciseLevel exerciseLevel) {
+    public Info(String firstName, String lastName, String password, String email, UserGender userGender, Integer age, float height, float weight, ExerciseLevel exerciseLevel) {
         super(firstName, lastName, password, email);
         this.userGender = userGender;
         this.age = age;
@@ -52,6 +52,7 @@ public class Info extends User {
         this.id = id;
     }
 
+
     public UserGender getUserGender() {
         return userGender;
     }
@@ -60,13 +61,21 @@ public class Info extends User {
         this.userGender = userGender;
     }
 
+
     public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
+//    public Integer getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(Integer age) {
+//        this.age = age;
+//    }
 
     public float getHeight() {
         return height;

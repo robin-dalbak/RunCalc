@@ -38,7 +38,7 @@
 
     <div class="optionType">
 
-        <form action="/home" method="post" th:object="${user}">
+        <form action="/home" method="post" th:object="${info}">
 
             <div class="optionType">
                 <select name="userGender" required>
@@ -49,20 +49,20 @@
             </div>
 
               <div class="optionType">
-              <p class="errorText" th:if="${#fields.hasErrors('age')}"> Please fill out this field</p>
+              <p class="errorText" th:if="${#fields.hasErrors('age')}">Please fill out this field</p>
                 <input th:errorclass="error" type="number" min="0" max="150" th:field="*{age}"
                         placeholder="Your age" required>
                   </div>
 
               <div class="optionType">
                   <p class="errorText" th:if="${#fields.hasErrors('height')}"> Please fill out this field</p>
-                  <input th:errorclass="error" type="number" min="0" max="150" th:field="*{height}"
+                  <input th:errorclass="error" type="number"  th:field="*{height}"
                          placeholder="Your height in CM" required>
               </div>
 
               <div class="optionType">
                   <p class="errorText" th:if="${#fields.hasErrors('weight')}"> Please fill out this field</p>
-                  <input th:errorclass="error" type="number" min="0" max="150" th:field="*{weight}"
+                  <input th:errorclass="error" type="number" th:field="*{weight}"
                          placeholder="Your weight in kilo" required>
               </div>
 

@@ -87,36 +87,53 @@ public class RunCalcController {
     }
 
     @GetMapping("/home")
-    public String getHome(@Valid Info info, BindingResult result, HttpSession s, Model m) {
+    public String getHome(@ModelAttribute Info info, HttpSession s, Model m) {
+        User user = (User) s.getAttribute("currentUser");
+        m.addAttribute("user", user);
 
+        return "home";
+    }
+
+
+    @PostMapping("/home")
+    public String postHome(@Valid User user, @Valid Info info, BindingResult result, HttpSession s) {
         if (result.hasErrors()) {
             return "home";
         }
-
-        User user = (User) s.getAttribute("currentUser");
-
-        // Create user
         User currentUser = (User) s.getAttribute("currentUser");
-        userRepository.save(currentUser);
+        Info currentInfo = (Info) s.getAttribute("currentUser");
 
-        // Creat info on User
-        info.setId(currentUser.getId());
+
+        // create info on users
+        currentUser.setFirstName(user.getFirstName());
+        currentUser.setLastName(user.getLastName());
+        currentUser.setEmail(user.getEmail());
+        currentUser.setPassword(user.getPassword());
+
+
+//        info.setFirstName(user.getFirstName());
+//        info.setLastName(user.getLastName());
+//        info.setEmail(user.getEmail());
+//        info.setPassword(user.getPassword());
+
+
+        info.setId(user.getId());
         info.setAge(info.getAge());
         info.setUserGender(info.getUserGender());
         info.setHeight(info.getHeight());
         info.setWeight(info.getWeight());
         info.setExerciseLevel(info.getExerciseLevel());
+        info.setId(currentUser.getId());
         infoRepository.save(info);
 
 //        Info userInfo = infoRepository.findByEmail(info.getEmail());
 //        Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
-        s.setAttribute("currentUser", currentUser);
+        user = userRepository.findById(info.getId()).get();
         s.setAttribute("currentUser", user);
-        m.addAttribute("user", user);
-        m.addAttribute("currentUser", currentUser);
 
-        return "home";
+        return "redirect:/home";
     }
+
 
     @GetMapping("/logout")
     public String getLogout(HttpSession s) {
