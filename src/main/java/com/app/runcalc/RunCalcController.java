@@ -96,13 +96,13 @@ public class RunCalcController {
 
 
     @PostMapping("/home")
-    public String postHome(@Valid User user, @Valid Info info, BindingResult result, HttpSession s) {
+    public String postHome(@Valid User user, @Valid Info info, @Valid Calculations calculations, BindingResult result, HttpSession s) {
         if (result.hasErrors()) {
             return "home";
         }
         User currentUser = (User) s.getAttribute("currentUser");
         Info currentInfo = (Info) s.getAttribute("currentUser");
-
+        Calculations currentCalculations = (Calculations) s.getAttribute("currentUser");
 
         // create info on users
         currentUser.setFirstName(user.getFirstName());
@@ -125,6 +125,14 @@ public class RunCalcController {
         info.setExerciseLevel(info.getExerciseLevel());
         info.setId(currentUser.getId());
         infoRepository.save(info);
+
+
+        calculations.setId(user.getId());
+        calculations.setBmi(calculations.getBmi());
+        calculations.setBmr(calculations.getBmr());
+        calculations.setId(currentUser.getId());
+        calculationsRepository.save(calculations);
+
 
 //        Info userInfo = infoRepository.findByEmail(info.getEmail());
 //        Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
