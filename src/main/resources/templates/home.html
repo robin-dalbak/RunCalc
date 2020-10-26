@@ -29,7 +29,7 @@
 <!-------- User info -------->
 <h1 th:text="Hey  + ${user.getFirstName()}"></h1>
 
-
+<!--<h1 th:text="Results + ${calculations.getBmi()}"></h1>-->
 
     <div class="optionType">
         <p>Fill out this form and RunCalc will calculate your BMI and BMR, for more info about how we calculate this for
@@ -50,18 +50,18 @@
 
               <div class="optionType">
               <p class="errorText" th:if="${#fields.hasErrors('age')}">Please fill out this field</p>
-                <input th:errorclass="error" type="number" min="0" max="150" th:field="*{age}"
+                <input th:errorclass="error" type="number" max="150" th:field="*{age}"
                         placeholder="Your age" required>
                   </div>
 
               <div class="optionType">
-                  <p class="errorText" th:if="${#fields.hasErrors('height')}"> Please fill out this field</p>
+                  <p class="errorText" th:if="${#fields.hasErrors('height')}">Please fill out this field</p>
                   <input th:errorclass="error" type="number"  th:field="*{height}"
                          placeholder="Your height in CM" required>
               </div>
 
               <div class="optionType">
-                  <p class="errorText" th:if="${#fields.hasErrors('weight')}"> Please fill out this field</p>
+                  <p class="errorText" th:if="${#fields.hasErrors('weight')}">Please fill out this field</p>
                   <input th:errorclass="error" type="number" th:field="*{weight}"
                          placeholder="Your weight in kilo" required>
               </div>
@@ -75,17 +75,28 @@
             </div>
 
 
-
             <div class="optionType">
                 <input class="continueButtons" type="submit" value="Continue">
             </div>
 
-
-
         </form>
 
-        <h1 th:text="${calculations.getBmi()}"></h1>
+<!--        <div class="optionType">-->
+<!--            <p th:field="bmi">-->
+<!--                placeholder="din BMI"-->
+<!--            </p>-->
+<!--        </div>-->
 
+<!--        <td th:text="${calculations.getBmi} ?: 'UNKNOWN'"></td>-->
+
+
+        <!--        <button onclick="myFunction()">Click Me</button>-->
+
+<!--        <div id="myDIV">-->
+<!--            <p th:text="${bmi}"> </p>-->
+<!--        </div>-->
+
+<!--        <p th:if="${bmi.isEmpty()}" class="calculationsText" th:text="'Din BMI'"></p>-->
 
     </div>
 

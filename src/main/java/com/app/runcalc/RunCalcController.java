@@ -89,20 +89,22 @@ public class RunCalcController {
     @GetMapping("/home")
     public String getHome(@ModelAttribute Info info, HttpSession s, Model m) {
         User user = (User) s.getAttribute("currentUser");
+//        Calculations calculations = (Calculations) s.getAttribute("currentCalculations");
         m.addAttribute("user", user);
+//        m.addAttribute("user", calculations);
+
 
         return "home";
     }
 
 
     @PostMapping("/home")
-    public String postHome(@Valid User user, @Valid Info info, @Valid Calculations calculations, BindingResult result, HttpSession s) {
+    public String postHome(@Valid User user, @Valid Info info, @Valid Calculations calculations, BindingResult result, HttpSession s, Model m) {
         if (result.hasErrors()) {
             return "home";
         }
         User currentUser = (User) s.getAttribute("currentUser");
-        Info currentInfo = (Info) s.getAttribute("currentUser");
-        Calculations currentCalculations = (Calculations) s.getAttribute("currentUser");
+
 
         // create info on users
         currentUser.setFirstName(user.getFirstName());
@@ -110,13 +112,7 @@ public class RunCalcController {
         currentUser.setEmail(user.getEmail());
         currentUser.setPassword(user.getPassword());
 
-
-//        info.setFirstName(user.getFirstName());
-//        info.setLastName(user.getLastName());
-//        info.setEmail(user.getEmail());
-//        info.setPassword(user.getPassword());
-
-
+        // Info
         info.setId(user.getId());
         info.setAge(info.getAge());
         info.setUserGender(info.getUserGender());
@@ -126,13 +122,14 @@ public class RunCalcController {
         info.setId(currentUser.getId());
         infoRepository.save(info);
 
-
+        // Calculations
         calculations.setId(user.getId());
         calculations.setBmi(calculations.getBmi());
         calculations.setBmr(calculations.getBmr());
         calculations.setId(currentUser.getId());
         calculationsRepository.save(calculations);
-
+        m.addAttribute("bmi", calculations.getBmi());
+        m.addAttribute("bmr", calculations.getBmr());
 
 //        Info userInfo = infoRepository.findByEmail(info.getEmail());
 //        Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
