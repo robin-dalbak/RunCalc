@@ -82,7 +82,7 @@ public class RunCalcController {
             return "newuser";
         }
         s.setAttribute("currentUser", user);
-        s.setAttribute("userId", user.getId());
+        userRepository.save(user);
         return "redirect:/home";
     }
 
@@ -106,36 +106,26 @@ public class RunCalcController {
         User currentUser = (User) s.getAttribute("currentUser");
 
 
-        // create info on users
-        currentUser.setFirstName(user.getFirstName());
-        currentUser.setLastName(user.getLastName());
-        currentUser.setEmail(user.getEmail());
-        currentUser.setPassword(user.getPassword());
-
         // Info
-        info.setId(user.getId());
         info.setAge(info.getAge());
         info.setUserGender(info.getUserGender());
         info.setHeight(info.getHeight());
         info.setWeight(info.getWeight());
         info.setExerciseLevel(info.getExerciseLevel());
+
         info.setId(currentUser.getId());
+
         infoRepository.save(info);
 
         // Calculations
-        calculations.setId(user.getId());
+        calculations.setId(currentUser.getId());
         calculations.setBmi(calculations.getBmi());
         calculations.setBmr(calculations.getBmr());
-        calculations.setId(currentUser.getId());
+
         calculationsRepository.save(calculations);
-        m.addAttribute("bmi", calculations.getBmi());
-        m.addAttribute("bmr", calculations.getBmr());
 
-//        Info userInfo = infoRepository.findByEmail(info.getEmail());
-//        Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
-        user = userRepository.findById(info.getId()).get();
-        s.setAttribute("currentUser", user);
 
+        
         return "redirect:/home";
     }
 
