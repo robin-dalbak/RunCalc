@@ -9,18 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-
-import java.util.List;
-import java.util.Map;
 
 import javax.validation.Valid;
 
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+
 
 @Controller
 public class RunCalcController {
@@ -34,11 +29,6 @@ public class RunCalcController {
     @Autowired
     public CalculationsRepository calculationsRepository;
 
-/*    public RunCalcController(UserRepository userRepository, InfoRepository infoRepository, CalculationsRepository calculationsRepository) {
-        this.userRepository = userRepository;
-        this.infoRepository = infoRepository;
-        this.calculationsRepository = calculationsRepository;
-    }*/
 
 
     @GetMapping("/")
@@ -109,12 +99,6 @@ public class RunCalcController {
         info.setPassword(currentUser.getPassword());
         info.setEmail(currentUser.getEmail());
         infoRepository.save(info);
-
-
-
-
-        // Info
-
 
 
         // Calculations

@@ -75,3 +75,6 @@ VALUES (1, 51, 21, 1),
         User logger = userRepository.findByEmail(user.getEmail());
         Info userInfo = infoRepository.findByEmail(info.getEmail());
         Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
+
+
+https://www.polar.com/blog/wp-content/uploads/2020/02/What-is-mindful-running-main.jpg

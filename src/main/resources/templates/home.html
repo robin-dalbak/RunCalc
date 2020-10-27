@@ -50,19 +50,19 @@
 
               <div class="optionType">
               <p class="errorText" th:if="${#fields.hasErrors('age')}">Please fill out this field</p>
-                <input class="infoinput" th:errorclass="error" type="number" max="150" th:field="*{age}"
+                <input  th:errorclass="error" type="number" max="150" th:field="*{age}"
                         placeholder="Your age" required>
                   </div>
 
               <div class="optionType">
                   <p class="errorText" th:if="${#fields.hasErrors('height')}">Please fill out this field</p>
-                  <input class="infoinput" th:errorclass="error" type="number"  th:field="*{height}"
+                  <input  th:errorclass="error" type="number"  th:field="*{height}"
                          placeholder="Your height in CM" required>
               </div>
 
               <div class="optionType">
                   <p class="errorText" th:if="${#fields.hasErrors('weight')}">Please fill out this field</p>
-                  <input class="infoinput" th:errorclass="error" type="number" th:field="*{weight}"
+                  <input  th:errorclass="error" type="number" th:field="*{weight}"
                          placeholder="Your weight in kilo" required>
               </div>
 
@@ -74,12 +74,39 @@
                 </select>
             </div>
 
+<!--            <div class="exerciseDescriptionContainer">-->
+<!--                <button class="faq" onclick="exerciseDescription()">FAQ-->
+<!--                </button>-->
 
-            <div class="optionType">
+                <div class="optionType">
                 <input class="continueButtons" type="submit" value="Continue">
             </div>
 
         </form>
+
+        <div class="optionType">
+            <p class="errorText" th:if="${#fields.hasErrors('height')}">Please fill out this field</p>
+            <input  th:errorclass="error" type="number"  th:field="*{height}"
+                    placeholder="Your height in CM" required>
+        </div>
+
+
+        
+        <div class="speedCalculator">
+            <p>Here is a speed calculator, fill in how fast you want to run a given distance and it will tell you how fast you need to run
+            </p>
+            <label>
+                <input type="number" placeholder="Enter distance in meters">
+            </label>
+            <input type="number" placeholder="Enter hours">
+            <input type="number" placeholder="Enter minutes">
+            <input type="number" placeholder="Enter seconds">
+
+            <div class="optionType">
+                <input class="continueButtons" type="submit" value="Calculate">
+            </div>
+        </div>
+
 
 <!--        <div class="optionType">-->
 <!--            <p th:field="bmi">-->

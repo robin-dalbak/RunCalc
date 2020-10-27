@@ -1,8 +1,10 @@
-function myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+function exerciseDescription() {
+    alert(
+        "Er denne tjenesten gratis å bruke?\n" +
+        "Ja, den er gratis å bruke.\n" +
+        "\nHvilke dyr finnes på PetMatch?\n" +
+        "Hund og katt, men flere kommer snart.\n" +
+        "\nKan dyrevernsorganisasjoner bruke PetMatch?\n" +
+        "Ja."
+    );
 }
