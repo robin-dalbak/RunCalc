@@ -27,7 +27,7 @@
 
 
 <!-------- User info -------->
-<h1 th:text="Hey  + ${user.getFirstName()}"></h1>
+<h1  th:text="'Hey ' + ${user.getFirstName()}"></h1>
 
 <!--<h1 th:text="Results + ${calculations.getBmi()}"></h1>-->
 
@@ -50,19 +50,19 @@
 
               <div class="optionType">
               <p class="errorText" th:if="${#fields.hasErrors('age')}">Please fill out this field</p>
-                <input th:errorclass="error" type="number" max="150" th:field="*{age}"
+                <input class="infoinput" th:errorclass="error" type="number" max="150" th:field="*{age}"
                         placeholder="Your age" required>
                   </div>
 
               <div class="optionType">
                   <p class="errorText" th:if="${#fields.hasErrors('height')}">Please fill out this field</p>
-                  <input th:errorclass="error" type="number"  th:field="*{height}"
+                  <input class="infoinput" th:errorclass="error" type="number"  th:field="*{height}"
                          placeholder="Your height in CM" required>
               </div>
 
               <div class="optionType">
                   <p class="errorText" th:if="${#fields.hasErrors('weight')}">Please fill out this field</p>
-                  <input th:errorclass="error" type="number" th:field="*{weight}"
+                  <input class="infoinput" th:errorclass="error" type="number" th:field="*{weight}"
                          placeholder="Your weight in kilo" required>
               </div>
 

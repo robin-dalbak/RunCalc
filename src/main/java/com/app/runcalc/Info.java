@@ -69,13 +69,6 @@ public class Info extends User {
     public void setAge(Integer age) {
         this.age = age;
     }
-//    public Integer getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(Integer age) {
-//        this.age = age;
-//    }
 
     public float getHeight() {
         return height;

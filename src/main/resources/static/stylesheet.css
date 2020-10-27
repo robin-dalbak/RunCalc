@@ -30,7 +30,7 @@ ul {
 
 /* header */
 .header {
-    background: #2F2FA2;
+    background: #466AA3;
     color: #EFE2BA;
     padding-top: 30px;
     min-height: 70px;
@@ -102,7 +102,7 @@ header a:hover {
 #newsletter {
     padding:15px;
     color: #ffffff;
-    background:#2F2FA2;
+    background:#466AA3;
 }
 
 #newsletter h1 {
@@ -121,9 +121,9 @@ header a:hover {
 
 #footer h4 {
     padding: 15px;
-    color: #F13C20;
+    color: white;
     text-align: center;
-    background:#2F2FA2;
+    background:#466AA3;
     margin-top:inherit;
     margin-bottom: inherit;
 
@@ -144,13 +144,13 @@ header a:hover {
 }
 
 .errorText {
-    color: red;
+    color: #F13C20;
     font-size: 10px;
 }
 
 .error {
     border-style: solid;
-    border-color: red;
+    border-color: #F13C20;
 }
 
 input:focus {
@@ -188,7 +188,7 @@ input:focus {
     padding: 10px;
     width: 160px;
     height: 40px;
-    background-color: #ff914d;
+    background-color: #F13C20;
     color: white;
     text-align: center;
     margin-left: auto;
@@ -251,13 +251,13 @@ input #ToS, input #NL {
     padding: 10px;
     width: 160px;
     height: 40px;
-    background-color: #ff914d;
+    background-color: #F13C20;
     color: white;
 }
 
-input {
-    width: 100%;
-    margin: 6% 0;
+input  {
+    width: 50%;
+    margin: 2% 0;
     border-radius: 15px;
     border: 0.5px solid grey;
     padding: 10px;

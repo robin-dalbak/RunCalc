@@ -13,8 +13,15 @@
 <!-------- HEADER -------->
 
 <header>
-    <div class="headerNyBruker">
-        <p id="headerLoginTekst">Registrer deg</p>
+    <div class="header">
+        <div id="options">
+            <h1><span class="highlight">Run</span>Calc</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="about">About</a></li>
+            </ul>
+        </nav>
     </div>
 </header>
 
@@ -32,7 +39,7 @@
         </div>
 
         <p class="errorText" th:if="${#fields.hasErrors('firstName')}">First Name must be between 3-30 characters</p>
-        <input th:field="*{firstName}" th:errorclass="error" class="inputs" id="first" type="text" placeholder="First Name" autofocus>
+        <input  th:field="*{firstName}" th:errorclass="error" class="inputs" id="first" type="text" placeholder="First Name" autofocus>
 
         <p class="errorText" th:if="${#fields.hasErrors('lastName')}">Last Name must be between 3-30 characters</p>
         <input th:field="*{lastName}" th:errorclass="error" class="inputs" id="last" type="text"
@@ -63,6 +70,11 @@
         </div>
     </div>
 </form>
+
+<section id="footer">
+    <h4>RunCalc, Copyright &copy; 2020 </h4>
+</section>
+
 </body>
 
 </html>

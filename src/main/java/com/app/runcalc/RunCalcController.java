@@ -89,9 +89,7 @@ public class RunCalcController {
     @GetMapping("/home")
     public String getHome(@ModelAttribute Info info, HttpSession s, Model m) {
         User user = (User) s.getAttribute("currentUser");
-//        Calculations calculations = (Calculations) s.getAttribute("currentCalculations");
         m.addAttribute("user", user);
-//        m.addAttribute("user", calculations);
 
 
         return "home";
@@ -99,33 +97,35 @@ public class RunCalcController {
 
 
     @PostMapping("/home")
-    public String postHome(@Valid User user, @Valid Info info, @Valid Calculations calculations, BindingResult result, HttpSession s, Model m) {
+    public String postHome(@Valid Info info, @Valid Calculations calculations, BindingResult result, HttpSession s) {
         if (result.hasErrors()) {
             return "home";
         }
+
         User currentUser = (User) s.getAttribute("currentUser");
+
+        info.setFirstName(currentUser.getFirstName());
+        info.setLastName(currentUser.getLastName());
+        info.setPassword(currentUser.getPassword());
+        info.setEmail(currentUser.getEmail());
+        infoRepository.save(info);
+
+
 
 
         // Info
-        info.setAge(info.getAge());
-        info.setUserGender(info.getUserGender());
-        info.setHeight(info.getHeight());
-        info.setWeight(info.getWeight());
-        info.setExerciseLevel(info.getExerciseLevel());
 
-        info.setId(currentUser.getId());
 
-        infoRepository.save(info);
 
         // Calculations
-        calculations.setId(currentUser.getId());
-        calculations.setBmi(calculations.getBmi());
-        calculations.setBmr(calculations.getBmr());
+//        calculations.setId(currentUser.getId());
+//        calculations.setBmi(calculations.getBmi());
+//        calculations.setBmr(calculations.getBmr());
+//
+//        calculationsRepository.save(calculations);
 
-        calculationsRepository.save(calculations);
 
 
-        
         return "redirect:/home";
     }
 
