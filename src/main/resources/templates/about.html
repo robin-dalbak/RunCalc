@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="home">Home</a></li>
                 <li class="current"><a href="about">About</a></li>
-                <li><a href="logout">Logout</a></li>
+                <li><a th:if"${user.} href="logout">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -30,15 +30,18 @@
     <div class="container">
         <div class="box">
             <h3>BMI</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies</p>
+            <p>BMI or Body Mass Index is a measure of body fat based on height and weight. The way you calculate it is by dividing your body mass(weight) by the square of your height - kg/m"<sup>2</sup>". The result can be used to determine if your weight might be putting you at risk for health problems. </p>
         </div>
         <div class="box">
             <h3>BMR</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies</p>
+            <p>Basal Metablic Rate is the total numbers of calories that your body needs to perform basic(basal), life-sustaining functions. Knowing your BMR can help you lose, gain or maintain your weight. We use the Harris-Benedict formula which takes into account gender, age, weight and height.
+            Woman: BMR = 655 + (9.6 × weight in kg) + (1.8 × height in cm) – (4.7 × age in years)
+            Men: BMR = 66 + (13.7 × weight in kg) + (5 × height in cm) – (6.8 × age in years)
+            </p>
         </div>
         <div class="box">
             <h3>Calculate speed</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mi augue, viverra sit amet ultricies</p>
+            <p>Let's say your goal is to run a marathon in 3 hours and 45 minutes, which speed should maintain? Here you just put in the distance and the time you want to use and we'll calculate it for you</p>
         </div>
     </div>
 </section>
