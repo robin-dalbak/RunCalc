@@ -37,7 +37,8 @@ public class RunCalcController {
     }
 
     @GetMapping("/about")
-    public String About() {
+    public String About(@ModelAttribute User user) {
+
         return "about";
     }
 
