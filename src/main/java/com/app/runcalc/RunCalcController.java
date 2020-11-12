@@ -102,12 +102,11 @@ public class RunCalcController {
         infoRepository.save(info);
 
 
-        // Calculations
-//        calculations.setId(currentUser.getId());
-//        calculations.setBmi(calculations.getBmi());
-//        calculations.setBmr(calculations.getBmr());
-//
-//        calculationsRepository.save(calculations);
+//         Calculations
+        calculations.setBmi(calculations.getBmi());
+        calculations.setBmr(calculations.getBmr());
+
+        calculationsRepository.save(calculations);
 
 
 

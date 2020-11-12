@@ -78,3 +78,53 @@ VALUES (1, 51, 21, 1),
 
 
 https://www.polar.com/blog/wp-content/uploads/2020/02/What-is-mindful-running-main.jpg
+
+
+CREATE TABLE user
+(
+    id              BIGINT AUTO_INCREMENT PRIMARY KEY,
+    first_name      VARCHAR(20),
+    last_name       VARCHAR(30),
+    user_gender     ENUM ('Male', 'FEMALE'),
+    birth_date      DATE,
+    user_img        VARCHAR(100),
+    BIO             VARCHAR(500),
+    want_newsletter BOOLEAN,
+    email           VARCHAR(50),
+    password        VARCHAR(50)
+);
+
+CREATE TABLE measurement
+(
+    id               BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id          BIGINT,
+    date_measurement DATETIME,
+    height           INT,
+    weight           INT,
+    exercise_level   ENUM ('SEDENTARY', 'LIGHTLY_ACTIVE', 'MODERATELY_ACTIVE', 'VERY_ACTIVE', 'SUPER_ACTIVE'),
+    bmi              float(50),
+    bmr              float(50),
+    FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+CREATE table workout
+(
+    id               BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id          BIGINT,
+    name_of_workout  VARCHAR(50),
+    type_of_workout  ENUM ('RUN', 'CYCLE', 'SWIM'),
+    image_of_workout VARCHAR(100),
+    description      VARCHAR(500),
+    time_spent       TIME,
+    route            VARCHAR(100),
+    FOREIGN KEY (user_id) REFERENCES user (id)
+);
+
+alter table user
+add measurement_id BIGINT;
+alter table user
+add foreign key (measurement_id) references measurement (id);
+alter table user
+add workout_id BIGINT;
+alter table user
+add foreign key (workout_id) references workout (id);
