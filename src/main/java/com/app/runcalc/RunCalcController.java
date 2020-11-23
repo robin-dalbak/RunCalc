@@ -2,7 +2,6 @@ package com.app.runcalc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +23,10 @@ public class RunCalcController {
     public UserRepository userRepository;
 
     @Autowired
-    public InfoRepository infoRepository;
+    public MeasurementRepository measurementRepository;
 
     @Autowired
-    public CalculationsRepository calculationsRepository;
+    public WorkoutRepository workoutRepository;
 
 
 
@@ -78,7 +77,7 @@ public class RunCalcController {
     }
 
     @GetMapping("/home")
-    public String getHome(@ModelAttribute Info info, HttpSession s, Model m) {
+    public String getHome(@ModelAttribute Measurement measurement, HttpSession s, Model m) {
         User user = (User) s.getAttribute("currentUser");
         m.addAttribute("user", user);
 
@@ -88,25 +87,18 @@ public class RunCalcController {
 
 
     @PostMapping("/home")
-    public String postHome(@Valid Info info, @Valid Calculations calculations, BindingResult result, HttpSession s) {
+    public String postHome(@Valid Measurement measurement, @Valid Workout workout, BindingResult result, HttpSession s) {
         if (result.hasErrors()) {
             return "home";
         }
 
         User currentUser = (User) s.getAttribute("currentUser");
 
-        info.setFirstName(currentUser.getFirstName());
-        info.setLastName(currentUser.getLastName());
-        info.setPassword(currentUser.getPassword());
-        info.setEmail(currentUser.getEmail());
-        infoRepository.save(info);
-
-
-//         Calculations
-        calculations.setBmi(calculations.getBmi());
-        calculations.setBmr(calculations.getBmr());
-
-        calculationsRepository.save(calculations);
+        measurement.setFirstName(currentUser.getFirstName());
+        measurement.setLastName(currentUser.getLastName());
+        measurement.setPassword(currentUser.getPassword());
+        measurement.setEmail(currentUser.getEmail());
+        measurementRepository.save(measurement);
 
 
 

@@ -26,19 +26,19 @@
 </header>
 
 
-<!-------- User info -------->
+<!-------- User measurement -------->
 <h1  th:text="'Hey ' + ${user.getFirstName()}"></h1>
 
 <!--<h1 th:text="Results + ${calc()}"></h1>-->
 
     <div class="optionType">
-        <p>Fill out this form and RunCalc will calculate your BMI and BMR, for more info about how we calculate this for
+        <p>Fill out this form and RunCalc will calculate your BMI and BMR, for more measurement about how we calculate this for
             you, check out our <a href="about">about</a> page.</p>
     </div>
 
     <div class="optionType">
 
-        <form action="/home" method="post" th:object="${info}">
+        <form action="/home" method="post" th:object="${measurement}">
 
             <div class="optionType">
                 <select name="userGender" required>

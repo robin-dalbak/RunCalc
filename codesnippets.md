@@ -1,14 +1,14 @@
 select *
-from info
+from measurement
 join user 
-on info.id = user.id
-join calculations
-on info.id = calculations.id;
+on measurement.id = user.id
+join workout
+on measurement.id = workout.id;
 
 select *
-from info
+from measurement
 join user
-on info.id = user.id;
+on measurement.id = user.id;
 
 create schema try;
 CREATE TABLE user
@@ -20,7 +20,7 @@ CREATE TABLE user
     email      VARCHAR(50)
 );
 
-CREATE TABLE info
+CREATE TABLE measurement
 (
     id             BIGINT,
     user_gender    ENUM ('MALE', 'FEMALE'),
@@ -32,7 +32,7 @@ CREATE TABLE info
         FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
-CREATE table calculations
+CREATE table workout
 (
     id  BIGINT,
     bmi FLOAT(50),
@@ -53,7 +53,7 @@ VALUES ('Abdi', 'Mohamed', '123456', 'Abdi123@gmail.com'),
        ('Sonja', 'Agnes', '123456', 'Sonja123@gmail.com'),
        ('Kristine', 'Jensen', '123456', 'Kristine123@gmail.com');
 
-INSERT INTO info (id, user_gender, age, height, weight, exercise_level, user_id)
+INSERT INTO measurement (id, user_gender, age, height, weight, exercise_level, user_id)
 VALUES (1, 'MALE', 18, 184, 78, 'SUPER_ACTIVE', 1),
        (2, 'MALE', 38, 160, 100, 'SEDENTARY', 2),
        (3, 'FEMALE', 22, 152, 48, 'VERY_ACTIVE', 3),
@@ -61,7 +61,7 @@ VALUES (1, 'MALE', 18, 184, 78, 'SUPER_ACTIVE', 1),
        (5, 'FEMALE', 34, 159, 61, 'LIGHTLY_ACTIVE', 5),
        (6, 'FEMALE', 44, 164, 62, 'SEDENTARY', 6);
 
-INSERT INTO calculations(id, bmi, bmr, info_id)
+INSERT INTO workout(id, bmi, bmr, info_id)
 VALUES (1, 51, 21, 1),
        (2, 51, 21, 2),
        (3, 51, 21, 3),
@@ -71,10 +71,10 @@ VALUES (1, 51, 21, 1),
 
 
  @PostMapping("/login")
-    public String postLogin(@ModelAttribute User user, @ModelAttribute Info info, @ModelAttribute Calculations calculations, HttpSession s, Model m) {
+    public String postLogin(@ModelAttribute User user, @ModelAttribute Info measurement, @ModelAttribute Calculations workout, HttpSession s, Model m) {
         User logger = userRepository.findByEmail(user.getEmail());
-        Info userInfo = infoRepository.findByEmail(info.getEmail());
-        Calculations userCalculations = calculationsRepository.findByEmail(calculations.getEmail());
+        Info userInfo = infoRepository.findByEmail(measurement.getEmail());
+        Calculations userCalculations = calculationsRepository.findByEmail(workout.getEmail());
 
 
 https://www.polar.com/blog/wp-content/uploads/2020/02/What-is-mindful-running-main.jpg
