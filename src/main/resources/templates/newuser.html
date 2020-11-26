@@ -38,24 +38,38 @@
             <p class="dineDet">Your details</p>
         </div>
 
+
         <p class="errorText" th:if="${#fields.hasErrors('firstName')}">First Name must be between 3-30 characters</p>
-        <input  th:field="*{firstName}" th:errorclass="error" class="inputs" id="first" type="text" placeholder="First Name" autofocus>
+        <input th:field="*{firstName}" th:errorclass="error" class="inputs" id="first" type="text"
+               placeholder="First Name" autofocus>
 
         <p class="errorText" th:if="${#fields.hasErrors('lastName')}">Last Name must be between 3-30 characters</p>
         <input th:field="*{lastName}" th:errorclass="error" class="inputs" id="last" type="text"
                placeholder="Last Name">
 
+        <div class="optionType">
+            <select name="userGender" required>
+                <option value="" selected disabled hidden>Gender</option>
+                <option th:each="userGender : ${T(com.app.runcalc.UserGender).values()}"
+                        th:value="${userGender}" th:text="${userGender.displayValueGender}"></option>
+            </select>
+        </div>
+
+
+        <p class="errorText" th:if="${#fields.hasErrors('birthdate')}">Please fill in your birth date</p>
+        <input th:field="*{birthdate}" th:errorclass="error" type="date">
+
         <p class="errorText" th:if="${#fields.hasErrors('email')}">Not a valid Email</p>
         <input th:field="*{email}" th:errorclass="error" type="text" placeholder="Email">
 
         <p class="errorText" th:if="${#fields.hasErrors('password')}">Password must be at least 6 characters long</p>
-        <input th:field="*{password}" th:errorclass="error" class="inputs" type="password" placeholder="Pasword">
+        <input th:field="*{password}" th:errorclass="error" class="inputs" type="password" placeholder="Password">
 
         <div class="checkboxRegistration">
             <div class="checkBoxCon">
                 <input type="checkbox" required id="ToS" name="brukervilkaar" value="tos">
                 <label class="" for="tos"> i approve <a href="#"
-                                                             onclick="alert('Your data will not be used for any commercial use, if you want to delete your data please send us a mail at Runcalc@Runcalc.com');">ToS</a>
+                                                        onclick="alert('Your data will not be used for any commercial use, if you want to delete your data please send us a mail at Runcalc@Runcalc.com');">ToS</a>
                     to use RunCalc</label>
             </div>
 

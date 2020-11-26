@@ -2,12 +2,14 @@ package com.app.runcalc;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Positive;
 import java.math.BigInteger;
-import java.sql.Date;
+import java.util.Date;
+
 
 @Entity
 @PrimaryKeyJoinColumn
@@ -25,7 +27,7 @@ public class Measurement extends User {
     private User userId;
 
     @Column(name = "date_measurement")
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateMeasurement;
     private float height;
     private float weight;
@@ -37,7 +39,7 @@ public class Measurement extends User {
 
     public void CalculateBMI() {
         bmi = (100 * 100 * getWeight() / (getHeight() * getHeight()));
-        setBmi(bmi);
+        setBmi(Math.round(bmi));
     }
 
 //    public void CalculateBMR() {
@@ -74,8 +76,8 @@ public class Measurement extends User {
 
 
 
-//    public Measurement() {
-//    }
+    public Measurement() {
+    }
 
     public Measurement(User userId, Date dateMeasurement, float height, float weight, ExerciseLevel exerciseLevel, float bmi, float bmr) {
         this.userId = userId;

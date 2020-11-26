@@ -5,7 +5,7 @@ body {
     background-color: #EFE2BE;
 }
 
-/* global */
+/* Global start */
 .container {
     width: 80%;
     margin: auto;
@@ -19,16 +19,28 @@ ul {
 
 .button_1 {
     height: 38px;
-    background:#F13C20;
+    background: #F13C20;
     border: none;
     padding-left: 20px;
     padding-right: 20px;
     color: white;
     border-radius: 15px;
-
 }
 
-/* header */
+.errorText {
+    color: #F13C20;
+    font-size: 10px;
+}
+
+.error {
+    border-style: solid;
+    border-color: #F13C20;
+}
+
+/* Global end*/
+
+
+/* Header start */
 .header {
     background: #466AA3;
     color: #EFE2BA;
@@ -73,7 +85,10 @@ header a:hover {
     font-weight: bold;
 }
 
-/* showcase */
+/* Header end */
+
+
+/* Showcase start */
 #showcase {
     min-height: 431px;
     background: url('images/therunner.jpg') no-repeat -10px -22px;
@@ -89,20 +104,13 @@ header a:hover {
 #showcase p {
     font-size: 20px;
 }
+/* Showcase end */
 
-#showcase .login {
-
-}
-
-#showcase .newuser {
-
-}
-
-/* newsletter */
+/* Newsletter start */
 #newsletter {
-    padding:15px;
+    padding: 15px;
     color: #ffffff;
-    background:#466AA3;
+    background: #466AA3;
 }
 
 #newsletter h1 {
@@ -119,44 +127,26 @@ header a:hover {
     width: 250px;
 }
 
+/* Newsletter end */
+
+
 #footer h4 {
     padding: 15px;
     color: white;
     text-align: center;
-    background:#466AA3;
-    margin-top:inherit;
+    background: #466AA3;
+    margin-top: inherit;
     margin-bottom: inherit;
-
 }
-
-
 
 .introBilde {
     display: flex;
     justify-content: center;
 }
 
-.introTekst {
-    text-align: center;
-    width: 250px;
-    font-size: 14px;
-    margin: auto;
-}
 
-.errorText {
-    color: #F13C20;
-    font-size: 10px;
-}
 
-.error {
-    border-style: solid;
-    border-color: #F13C20;
-}
-
-input:focus {
-    outline: none;
-}
-
+/* Registration form */
 .formContainer {
     display: flex;
     justify-content: center;
@@ -167,62 +157,11 @@ input:focus {
     text-align: center;
 }
 
-.leftArrowAtag {
-    display: inline-block;
-    margin-top: 50px;
-    margin-bottom: 15px;
-    margin-left: 40px;
-    color: black;
-}
-
-
-.optionType {
-    display: flex;
-    justify-content: center;
-    margin: 10px 40px;
-}
-
-.continueButtons {
-    border-radius: 15px;
-    border: 0;
-    padding: 10px;
-    width: 160px;
-    height: 40px;
-    background-color: #F13C20;
-    color: white;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-
-.dineDet {
-    text-align: center;
-    color: grey;
-    margin-bottom: 0;
-    margin-top: 35px;
-    font-size: 15px;
-}
-
 .checkboxRegistration {
     font-size: 12px;
     margin: 25px 0;
 }
 
-.dineDet {
-    text-align: center;
-    color: grey;
-    margin-bottom: 0;
-    margin-top: 35px;
-    font-size: 15px;
-}
-
-.checkboxRegistration {
-    font-size: 12px;
-    margin: 25px 0;
-}
 
 .checkBoxCon {
     display: flex;
@@ -230,6 +169,7 @@ input:focus {
     align-items: center;
     margin: 12px 0;
 }
+
 
 label {
     width: 190px;
@@ -245,6 +185,36 @@ input #ToS, input #NL {
     width: 20px;
 }
 
+
+input {
+    width: 50%;
+    margin: 2% 0;
+    border-radius: 15px;
+    border: 0.5px solid grey;
+    padding: 10px;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+.optionType {
+    display: flex;
+    justify-content: center;
+    margin: 10px 40px;
+}
+
+
+
+
+
+
+
+/*  exxtra  /*
+
+
+
 .orangeButton {
     border-radius: 15px;
     border: 0;
@@ -255,13 +225,24 @@ input #ToS, input #NL {
     color: white;
 }
 
-input  {
-    width: 50%;
-    margin: 2% 0;
-    border-radius: 15px;
-    border: 0.5px solid grey;
-    padding: 10px;
+
+.leftArrowAtag {
+    display: inline-block;
+    margin-top: 50px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    color: black;
 }
+
+
+.dineDet {
+    text-align: center;
+    color: grey;
+    margin-bottom: 0;
+    margin-top: 35px;
+    font-size: 15px;
+}
+
 
 /*.exerciseDescriptionContainer {*/
 /*    display: flex;*/
@@ -282,3 +263,21 @@ input  {
 /*    margin: 8px;*/
 /*}*/
 
+
+
+
+
+/*.continueButtons {*/
+/*    border-radius: 15px;*/
+/*    border: 0;*/
+/*    padding: 10px;*/
+/*    width: 160px;*/
+/*    height: 40px;*/
+/*    background-color: #F13C20;*/
+/*    color: white;*/
+/*    text-align: center;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    display: block;*/
+/*    font-family: Verdana, Geneva, Tahoma, sans-serif;*/
+/*}*/

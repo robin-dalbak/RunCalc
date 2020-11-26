@@ -1,19 +1,17 @@
 package com.app.runcalc;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.sql.Date;
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+
+import java.util.Date;
 
 
 @Entity
@@ -31,9 +29,8 @@ public class User {
     private String lastName;
     @Enumerated(EnumType.STRING)
     private UserGender userGender;
-    @Column(name = "birth_date")
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private Date birthDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthdate;
     @Column(name = "user_img")
     private String userImg;
     private String bio;
@@ -48,11 +45,11 @@ public class User {
     }
 
 
-    public User(String firstName, String lastName, UserGender userGender, Date birthDate, String userImg, String bio, boolean wantNewsletter, String email, String password) {
+    public User(String firstName, String lastName, UserGender userGender, Date birthdate, String userImg, String bio, boolean wantNewsletter, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userGender = userGender;
-        this.birthDate = birthDate;
+        this.birthdate = birthdate;
         this.userImg = userImg;
         this.bio = bio;
         this.wantNewsletter = wantNewsletter;
@@ -93,12 +90,12 @@ public class User {
         this.userGender = userGender;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(Date birthDate) {
+        this.birthdate = birthDate;
     }
 
     public String getUserImg() {

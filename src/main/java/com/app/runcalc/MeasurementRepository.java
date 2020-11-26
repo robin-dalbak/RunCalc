@@ -9,5 +9,8 @@ import java.util.List;
 public interface MeasurementRepository extends CrudRepository<Measurement, Integer> {
 
     public List<Measurement> findByUserId(int userId);
+    public List<Measurement> findByHeight(float height);
 
+
+    Measurement findByBmi (float bmi);
 }

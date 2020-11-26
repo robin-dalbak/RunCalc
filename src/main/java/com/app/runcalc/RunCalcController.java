@@ -2,9 +2,12 @@ package com.app.runcalc;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
@@ -14,6 +17,8 @@ import javax.validation.Valid;
 
 
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 
 @Controller
@@ -27,6 +32,10 @@ public class RunCalcController {
 
     @Autowired
     public WorkoutRepository workoutRepository;
+
+
+    @Autowired
+    public UserService userService;
 
 
 
@@ -72,9 +81,20 @@ public class RunCalcController {
             return "newuser";
         }
         s.setAttribute("currentUser", user);
-        userRepository.save(user);
+        userService.addUser(user);
         return "redirect:/home";
     }
+
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder) {
+//
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+//        dateFormat.setLenient(false);
+//        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+//    }
+
+
+
 
     @GetMapping("/home")
     public String getHome(@ModelAttribute Measurement measurement, HttpSession s, Model m) {

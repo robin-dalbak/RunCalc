@@ -40,19 +40,6 @@
 
         <form action="/home" method="post" th:object="${measurement}">
 
-            <div class="optionType">
-                <select name="userGender" required>
-                    <option value="" selected disabled hidden>Gender</option>
-                    <option th:each="userGender : ${T(com.app.runcalc.UserGender).values()}"
-                            th:value="${userGender}" th:text="${userGender.displayValueGender}"></option>
-                </select>
-            </div>
-
-              <div class="optionType">
-              <p class="errorText" th:if="${#fields.hasErrors('age')}">Please fill out this field</p>
-                <input  th:errorclass="error" type="number" max="150" th:field="*{age}"
-                        placeholder="Your age" required>
-                  </div>
 
               <div class="optionType">
                   <p class="errorText" th:if="${#fields.hasErrors('height')}">Please fill out this field</p>

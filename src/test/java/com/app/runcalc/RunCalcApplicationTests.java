@@ -10,7 +10,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class RunCalcApplicationTests {
 
     @Autowired
-    UserRepository repository;
+    UserRepository userRepository;
+
+    @Autowired
+    MeasurementRepository measurementRepository;
+
+    @Autowired
+    UserService userService;
+
 
     @Test
     void contextLoads() {
@@ -18,12 +25,12 @@ class RunCalcApplicationTests {
 
     @Test
     void shouldFindNumberOfUsers() {
-        assertEquals(6, repository.count());
+        assertEquals(6, userRepository.count());
     }
 
     @Test
     void findUserWithId() {
-        User user = repository.findById(6).get();
+        User user = userRepository.findById(6).get();
 
         assertEquals("Kristine", user.getFirstName());
         assertEquals("Jensen", user.getLastName());
@@ -34,11 +41,24 @@ class RunCalcApplicationTests {
 
     @Test
     void findUserWithEmail() {
-        User user = repository.findByEmail("Abdi123@gmail.com");
+        User user = userRepository.findByEmail("Abdi123@gmail.com");
 
         assertEquals("123456", user.getPassword());
 
     }
+
+    @Test
+    void findBMI() {
+        Measurement measurement = measurementRepository.findById(1).get();
+
+        assertEquals(23, measurement.getBmi());
+    }
+
+//    @Test
+//    void addUser() {
+//        User user = userService.addUser("");
+//    }
+
 
 //    @Test
 //    void findUserByAge() {

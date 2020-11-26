@@ -32,7 +32,7 @@ public class Formulas {
         float height = input.nextFloat();
 
         bodyMassIndex = (100 * 100 * weight) / (height * height);
-        System.out.println("Your BMI is: " + bodyMassIndex);
+        System.out.println("Your BMI is: " + Math.round(bodyMassIndex));
 
         if (bodyMassIndex < 18.5) {
             System.out.println("You are underweight");
@@ -97,7 +97,7 @@ public class Formulas {
         }
 
 
-        System.out.println("Your BMR is: " + basalMetabolicRate);
+        System.out.println("Your BMR is: " + Math.round(basalMetabolicRate));
     }
 
     public void CalculateRun() {
@@ -131,7 +131,7 @@ public class Formulas {
         // write your code here
         Formulas runner = new Formulas();
         //runner.CalculateRun();
-        //runner.CalculateBMI();
+      //  runner.CalculateBMI();
         runner.CalculateBMR();
     }
 }

@@ -34,6 +34,9 @@ public class MeasurementService {
         measurementRepository.deleteById(id);
     }
 
+//    public void calculateBMI(float height, float weight, float bmi) {
+//
+//    }
 
 
 }

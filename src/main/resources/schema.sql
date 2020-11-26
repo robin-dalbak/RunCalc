@@ -1,14 +1,14 @@
 CREATE TABLE user
 (
     id              BIGINT AUTO_INCREMENT PRIMARY KEY,
-    first_name      VARCHAR(20)             NOT NULL,
-    last_name       VARCHAR(30)             NOT NULL,
-    gender          ENUM ('Male', 'FEMALE') NOT NULL,
-    birth_date      DATE,
+    first_name      VARCHAR(20) NOT NULL,
+    last_name       VARCHAR(30) NOT NULL,
+    user_gender     ENUM ('Male', 'FEMALE'),
+    birthdate       DATE,
     user_img        VARCHAR(100),
     bio             VARCHAR(500),
     want_newsletter BOOLEAN,
-    email           VARCHAR(50)             NOT NULL,
+    email           VARCHAR(50) NOT NULL,
     password        VARCHAR(50)
 );
 
