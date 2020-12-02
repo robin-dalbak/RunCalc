@@ -17,8 +17,6 @@ import javax.validation.Valid;
 
 
 import javax.servlet.http.HttpSession;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 
 @Controller
@@ -33,9 +31,11 @@ public class RunCalcController {
     @Autowired
     public WorkoutRepository workoutRepository;
 
-
     @Autowired
     public UserService userService;
+
+    @Autowired
+    public MeasurementService measurementService;
 
 
 
@@ -64,7 +64,7 @@ public class RunCalcController {
             return "redirect:/home";
         }
 
-        String errorMsg = "Wrong email or wrong password";
+        String errorMsg = "Wrong email or password";
         m.addAttribute("errorMsg", errorMsg);
         return "login";
     }
@@ -81,6 +81,7 @@ public class RunCalcController {
             return "newuser";
         }
         s.setAttribute("currentUser", user);
+
         userService.addUser(user);
         return "redirect:/home";
     }
@@ -92,8 +93,6 @@ public class RunCalcController {
 //        dateFormat.setLenient(false);
 //        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 //    }
-
-
 
 
     @GetMapping("/home")
@@ -112,14 +111,22 @@ public class RunCalcController {
             return "home";
         }
 
-        User currentUser = (User) s.getAttribute("currentUser");
+        User user = (User) s.getAttribute("currentUser");
 
-        measurement.setFirstName(currentUser.getFirstName());
-        measurement.setLastName(currentUser.getLastName());
-        measurement.setPassword(currentUser.getPassword());
-        measurement.setEmail(currentUser.getEmail());
-        measurementRepository.save(measurement);
 
+//        measurement.setId(user.getId());
+//        measurement.setFirstName(user.getFirstName());
+//        measurement.setLastName(user.getLastName());
+//        measurement.setUserGender(user.getUserGender());
+//        measurement.setBirthdate(user.getBirthdate());
+//        measurement.setUserImg(user.getUserImg());
+//        measurement.setBio(user.getBio());
+//        measurement.setWantNewsletter(user.isWantNewsletter());
+//        measurement.setEmail(user.getEmail());
+//        measurement.setPassword(user.getPassword());
+        measurementService.addMeasurement(measurement);
+
+//        currentUser = userRepository.findById(currentUser.getId());
 
 
         return "redirect:/home";

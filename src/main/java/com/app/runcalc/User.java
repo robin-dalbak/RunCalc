@@ -36,6 +36,7 @@ public class User {
     private String bio;
     @Column(name = "want_newsletter")
     private boolean wantNewsletter;
+
     @Email
     private String email;
     @Size(min = 6, max = 50)
@@ -46,6 +47,7 @@ public class User {
 
 
     public User(String firstName, String lastName, UserGender userGender, Date birthdate, String userImg, String bio, boolean wantNewsletter, String email, String password) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.userGender = userGender;

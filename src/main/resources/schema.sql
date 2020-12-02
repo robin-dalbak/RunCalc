@@ -3,12 +3,12 @@ CREATE TABLE user
     id              BIGINT AUTO_INCREMENT PRIMARY KEY,
     first_name      VARCHAR(20) NOT NULL,
     last_name       VARCHAR(30) NOT NULL,
-    user_gender     ENUM ('Male', 'FEMALE'),
+    user_gender     ENUM ('MALE', 'FEMALE'),
     birthdate       DATE,
     user_img        VARCHAR(100),
     bio             VARCHAR(500),
     want_newsletter BOOLEAN,
-    email           VARCHAR(50) NOT NULL,
+    email           VARCHAR(50) NOT NULL UNIQUE,
     password        VARCHAR(50)
 );
 
@@ -38,12 +38,12 @@ CREATE table workout
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
-ALTER TABLE user
-    ADD measurement_id BIGINT;
-ALTER TABLE user
-    ADD FOREIGN KEY (measurement_id) REFERENCES measurement (id);
-ALTER TABLE user
-    ADD workout_id BIGINT;
-ALTER TABLE user
-    ADD FOREIGN KEY (workout_id) REFERENCES workout (id);
+-- ALTER TABLE user
+--     ADD measurement_id BIGINT;
+-- ALTER TABLE user
+--     ADD FOREIGN KEY (measurement_id) REFERENCES measurement (id);
+-- ALTER TABLE user
+--     ADD workout_id BIGINT;
+-- ALTER TABLE user
+--     ADD FOREIGN KEY (workout_id) REFERENCES workout (id);
 
