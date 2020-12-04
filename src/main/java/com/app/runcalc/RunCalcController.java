@@ -96,7 +96,7 @@ public class RunCalcController {
 
 
     @GetMapping("/home")
-    public String getHome(@ModelAttribute Measurement measurement, HttpSession s, Model m) {
+    public String getHome(HttpSession s, Model m) {
         User user = (User) s.getAttribute("currentUser");
         m.addAttribute("user", user);
 
@@ -114,20 +114,21 @@ public class RunCalcController {
         User user = (User) s.getAttribute("currentUser");
 
 
-//        measurement.setId(user.getId());
-//        measurement.setFirstName(user.getFirstName());
-//        measurement.setLastName(user.getLastName());
-//        measurement.setUserGender(user.getUserGender());
-//        measurement.setBirthdate(user.getBirthdate());
-//        measurement.setUserImg(user.getUserImg());
-//        measurement.setBio(user.getBio());
-//        measurement.setWantNewsletter(user.isWantNewsletter());
-//        measurement.setEmail(user.getEmail());
-//        measurement.setPassword(user.getPassword());
+        measurement.setId(user.getId());
+        measurement.setFirstName(user.getFirstName());
+        measurement.setLastName(user.getLastName());
+        measurement.setUserGender(user.getUserGender());
+        measurement.setBirthdate(user.getBirthdate());
+        measurement.setUserImg(user.getUserImg());
+        measurement.setBio(user.getBio());
+        measurement.setWantNewsletter(user.isWantNewsletter());
+        measurement.setEmail(user.getEmail());
+        measurement.setPassword(user.getPassword());
         measurementService.addMeasurement(measurement);
 
 //        currentUser = userRepository.findById(currentUser.getId());
-
+        user = userRepository.getUser
+        s.setAttribute("currentUser", user);
 
         return "redirect:/home";
     }
