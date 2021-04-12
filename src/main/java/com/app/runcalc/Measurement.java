@@ -22,9 +22,9 @@ public class Measurement extends User {
     private int id;
 
 
-    @ManyToOne
+
     @JoinColumn(name="user_id")
-    private User userId;
+    private int userId;
 
     @Column(name = "date_measurement")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -79,7 +79,7 @@ public class Measurement extends User {
     public Measurement() {
     }
 
-    public Measurement(User userId, Date dateMeasurement, float height, float weight, ExerciseLevel exerciseLevel, float bmi, float bmr) {
+    public Measurement(int userId, Date dateMeasurement, float height, float weight, ExerciseLevel exerciseLevel, float bmi, float bmr) {
         this.userId = userId;
         this.dateMeasurement = dateMeasurement;
         this.height = height;
@@ -101,11 +101,11 @@ public class Measurement extends User {
         this.id = id;
     }
 
-    public User getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(User userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

@@ -22,20 +22,23 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class RunCalcController {
 
-    @Autowired
-    public UserRepository userRepository;
+//    @Autowired
+//    public UserRepository userRepository;
 
-    @Autowired
-    public MeasurementRepository measurementRepository;
-
-    @Autowired
-    public WorkoutRepository workoutRepository;
+//    @Autowired
+//    public MeasurementRepository measurementRepository;
+//
+//    @Autowired
+//    public WorkoutRepository workoutRepository;
 
     @Autowired
     public UserService userService;
 
     @Autowired
     public MeasurementService measurementService;
+
+    @Autowired
+    public WorkoutService workoutService;
 
 
 
@@ -57,7 +60,8 @@ public class RunCalcController {
 
     @PostMapping("/login")
     public String postLogin(@ModelAttribute User user, HttpSession s, Model m) {
-        User logger = userRepository.findByEmail(user.getEmail());
+        User logger = userService.getUser(user.getEmail());
+
 
         if (logger != null && logger.getEmail().equals(user.getEmail()) && logger.getPassword().equals(user.getPassword())) {
             s.setAttribute("currentUser", logger);
@@ -96,7 +100,7 @@ public class RunCalcController {
 
 
     @GetMapping("/home")
-    public String getHome(HttpSession s, Model m) {
+    public String getHome(@ModelAttribute Measurement measurement, HttpSession s, Model m) {
         User user = (User) s.getAttribute("currentUser");
         m.addAttribute("user", user);
 
@@ -106,30 +110,40 @@ public class RunCalcController {
 
 
     @PostMapping("/home")
-    public String postHome(@Valid Measurement measurement, @Valid Workout workout, BindingResult result, HttpSession s) {
+    public String postHome(@Valid Measurement measurement, @Valid User user, BindingResult result, HttpSession s) {
         if (result.hasErrors()) {
             return "home";
         }
 
-        User user = (User) s.getAttribute("currentUser");
+//        User user = (User) s.getAttribute("currentUser");
 
+        User currentUser = (User) s.getAttribute("currentUser");
 
-        measurement.setId(user.getId());
-        measurement.setFirstName(user.getFirstName());
-        measurement.setLastName(user.getLastName());
-        measurement.setUserGender(user.getUserGender());
-        measurement.setBirthdate(user.getBirthdate());
-        measurement.setUserImg(user.getUserImg());
-        measurement.setBio(user.getBio());
-        measurement.setWantNewsletter(user.isWantNewsletter());
-        measurement.setEmail(user.getEmail());
-        measurement.setPassword(user.getPassword());
+        measurement.setUserId(currentUser.getId());
+        measurement.setHeight(measurement.getHeight());
+        measurement.setWeight(measurement.getWeight());
+        measurement.setBmi(measurement.getBmi());
+        measurement.setBmr(measurement.getBmr());
+        measurement.setDateMeasurement(measurement.getDateMeasurement());
         measurementService.addMeasurement(measurement);
 
-//        currentUser = userRepository.findById(currentUser.getId());
-        user = userRepository.getUser
-        s.setAttribute("currentUser", user);
 
+//        measurement.setId(user.getId());
+//        measurement.setFirstName(user.getFirstName());
+//        measurement.setLastName(user.getLastName());
+//        measurement.setUserGender(user.getUserGender());
+//        measurement.setBirthdate(user.getBirthdate());
+//        measurement.setUserImg(user.getUserImg());
+//        measurement.setBio(user.getBio());
+//        measurement.setWantNewsletter(user.isWantNewsletter());
+//        measurement.setEmail(user.getEmail());
+//        measurement.setPassword(user.getPassword());
+
+//        currentUser = userRepository.findById(currentUser.getId());
+//        user = userService.getUser(user.getId()).get();
+
+
+        s.setAttribute("currentUser", user);
         return "redirect:/home";
     }
 
@@ -137,7 +151,7 @@ public class RunCalcController {
     @GetMapping("/logout")
     public String getLogout(HttpSession s) {
         s.removeAttribute("currentUser");
-        return "redirect:/logout";
+        return "/logout";
     }
 
 

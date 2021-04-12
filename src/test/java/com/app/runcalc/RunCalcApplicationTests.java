@@ -54,6 +54,17 @@ class RunCalcApplicationTests {
         assertEquals(23, measurement.getBmi());
     }
 
+
+    @Test
+    void findUserWithIdUsingService() {
+        User userService = userRepository.findById(1).get();
+
+        assertEquals("123456", userService.getPassword());
+    }
+
+
+
+
 //    @Test
 //    void addUser() {
 //        User user = userService.addUser("");
